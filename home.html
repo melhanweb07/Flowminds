@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MindWell</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo" onclick="navigateTo('home.html')">
+                <i class="fas fa-brain"></i>
+                <h1>MindWell</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-link active">Home</a></li>
+                    <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                    <li><a href="appointment.html" class="nav-link">Appointments</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <div class="user-avatar" onclick="navigateTo('profile.html')">JS</div>
+                <button class="btn btn-outline" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-sidebar">
+                <div class="profile-header">
+                    <div class="profile-avatar">JS</div>
+                    <div>
+                        <h3>John Student</h3>
+                        <p>Psychology Major</p>
+                        <p><i class="fas fa-map-marker-alt"></i> University of California</p>
+                    </div>
+                </div>
+                
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Sessions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Streak</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">85%</div>
+                        <div class="stat-label">Progress</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Mood Today</label>
+                    <select>
+                        <option>😊 Happy</option>
+                        <option>😐 Neutral</option>
+                        <option>😟 Anxious</option>
+                        <option>😔 Sad</option>
+                        <option>😴 Tired</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-plus"></i> Check-in
+                </button>
+            </div>
+            
+            <div class="profile-main">
+                <h2 class="section-title">My Wellness Journey</h2>
+                
+                <div class="dashboard-grid">
+                    <div class="metric-card">
+                        <h3>Mood Tracking</h3>
+                        <div class="chart-container">
+                            <canvas id="moodChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Weekly Goals</h3>
+                        <div class="chart-container">
+                            <canvas id="goalsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Recommended Resources</h3>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Meditation">
+                        <div class="card-content">
+                            <h4>Guided Meditation</h4>
+                            <p>10 min session for stress relief</p>
+                            <button class="btn btn-outline" style="margin-top: 10px;">
+                                <i class="fas fa-play"></i> Start
+                            </button>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Exercise">
+                        <div class="card-content">
+                            <h4>Daily Exercise</h4>
+                            <p>Yoga for mental wellness</p>
+                            <button class="btn btn-outline" style="margin-top: 10px;">
+                                <i class="fas fa-play"></i> Start
+                            </button>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Reading">
+                        <div class="card-content">
+                            <h4>Recommended Reading</h4>
+                            <p>Books for personal growth</p>
+                            <button class="btn btn-outline" style="margin-top: 10px;">
+                                <i class="fas fa-book-open"></i> Read
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Your data is always safe and anonymous. We never share your personal information.</p>
+            <p>MindWell &copy; 2023. A supportive community for student mental wellness.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize charts
+        function initCharts() {
+            // Mood Chart
+            const moodCtx = document.getElementById('moodChart');
+            if (moodCtx) {
+                new Chart(moodCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Mood Level',
+                            data: [3, 4, 3, 5, 4, 6, 7],
+                            borderColor: '#5a67d8',
+                            tension: 0.3,
+                            fill: true,
+                            backgroundColor: 'rgba(90, 103, 216, 0.1)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 10,
+                                ticks: {
+                                    stepSize: 2
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Goals Chart
+            const goalsCtx = document.getElementById('goalsChart');
+            if (goalsCtx) {
+                new Chart(goalsCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Completed', 'Remaining'],
+                        datasets: [{
+                            data: [75, 25],
+                            backgroundColor: ['#5a67d8', '#a7d0e0']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            }
+        }
+        
+        window.onload = function() {
+            initCharts();
+        };
+    </script>
+</body>
+</html>

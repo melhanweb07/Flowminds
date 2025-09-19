@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counselor Dashboard - MindWell</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo" onclick="navigateTo('counselor-dashboard.html')">
+                <i class="fas fa-brain"></i>
+                <h1>MindWell</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="counselor-dashboard.html" class="nav-link active">Dashboard</a></li>
+                    <li><a href="counselor-clients.html" class="nav-link">Clients</a></li>
+                    <li><a href="counselor-resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="counselor-schedule.html" class="nav-link">Schedule</a></li>
+                    <li><a href="counselor-analytics.html" class="nav-link">Analytics</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <div class="user-avatar" onclick="navigateTo('counselor-profile.html')">DR</div>
+                <button class="btn btn-outline" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-sidebar">
+                <div class="profile-header">
+                    <div class="profile-avatar">DR</div>
+                    <div>
+                        <h3>Dr. Rachel Smith</h3>
+                        <p>Licensed Therapist</p>
+                        <p><i class="fas fa-star"></i> 4.9 (128 reviews)</p>
+                    </div>
+                </div>
+                
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Sessions Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">96%</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" style="width: 100%; margin-bottom: 15px;">
+                    <i class="fas fa-plus"></i> New Resource
+                </button>
+                
+                <button class="btn btn-outline" style="width: 100%;">
+                    <i class="fas fa-calendar"></i> View Schedule
+                </button>
+            </div>
+            
+            <div class="profile-main">
+                <h2 class="section-title">Counselor Dashboard</h2>
+                
+                <div class="upload-section">
+                    <h3><i class="fas fa-upload"></i> Upload New Resource</h3>
+                    <div class="form-group">
+                        <label for="resourceTitle">Resource Title</label>
+                        <input type="text" id="resourceTitle" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="resourceType">Resource Type</label>
+                        <select id="resourceType">
+                            <option>Video</option>
+                            <option>Article</option>
+                            <option>Exercise</option>
+                            <option>Book Recommendation</option>
+                        </select>
+                    </div>
+                    <div class="upload-options">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-link"></i> Add URL
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-upload"></i> Upload File
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Resource
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="metric-card">
+                        <h3>Student Progress</h3>
+                        <div class="chart-container">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Session Types</h3>
+                        <div class="chart-container">
+                            <canvas id="sessionsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Recent Student Check-ins</h3>
+                <div class="forum-container">
+                    <div class="forum-post">
+                        <div class="post-meta">
+                            <div class="avatar">JS</div>
+                            <div>
+                                <strong>John Student</strong>
+                                <span>30 minutes ago</span>
+                            </div>
+                        </div>
+                        <p>Feeling much better after our last session. The breathing techniques really helped with my anxiety during exams.</p>
+                        <button class="btn btn-outline" style="margin-top: 10px;">
+                            <i class="fas fa-reply"></i> Respond
+                        </button>
+                    </div>
+                    <div class="forum-post">
+                        <div class="post-meta">
+                            <div class="avatar">AS</div>
+                            <div>
+                                <strong>Anna Smith</strong>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                        <p>Still struggling with sleep issues. Would appreciate some additional resources on sleep hygiene.</p>
+                        <button class="btn btn-outline" style="margin-top: 10px;">
+                            <i class="fas fa-reply"></i> Respond
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Your data is always safe and anonymous. We never share your personal information.</p>
+            <p>MindWell &copy; 2023. A supportive community for student mental wellness.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize charts for counselor dashboard
+        function initCounselorCharts() {
+            // Progress Chart
+            const progressCtx = document.getElementById('progressChart');
+            if (progressCtx) {
+                new Chart(progressCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                        datasets: [{
+                            label: 'Average Progress',
+                            data: [65, 75, 70, 85],
+                            backgroundColor: '#5a67d8'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+
+            // Sessions Chart
+            const sessionsCtx = document.getElementById('sessionsChart');
+            if (sessionsCtx) {
+                new Chart(sessionsCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Individual', 'Group', 'Crisis', 'Workshop'],
+                        datasets: [{
+                            data: [45, 25, 15, 15],
+                            backgroundColor: ['#5a67d8', '#a7d0e0', '#ffd8b1', '#c9e4c5']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            }
+        }
+        
+        window.onload = function() {
+            initCounselorCharts();
+        };
+    </script>
+</body>
+</html>

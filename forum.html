@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peer Support - MindWell</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo" onclick="navigateTo('home.html')">
+                <i class="fas fa-brain"></i>
+                <h1>MindWell</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-link">Home</a></li>
+                    <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                    <li><a href="appointment.html" class="nav-link">Appointments</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="forum.html" class="nav-link active">Forum</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <div class="user-avatar" onclick="navigateTo('profile.html')">JS</div>
+                <button class="btn btn-outline" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Peer Support Forum</h2>
+        
+        <div class="forum-actions">
+            <button class="btn btn-primary" onclick="showNewPostModal()">
+                <i class="fas fa-plus"></i> New Post
+            </button>
+            <div class="forum-filters">
+                <button class="btn btn-outline">All Topics</button>
+                <button class="btn btn-outline">Anxiety</button>
+                <button class="btn btn-outline">Depression</button>
+                <button class="btn btn-outline">Stress</button>
+            </div>
+        </div>
+        
+        <div class="forum-container">
+            <div class="forum-post">
+                <div class="post-meta">
+                    <div class="avatar">AS</div>
+                    <div>
+                        <strong>AnxiousStudent</strong>
+                        <span>Posted 2 days ago</span>
+                    </div>
+                </div>
+                <h3>Feeling overwhelmed with finals coming up</h3>
+                <p>I'm feeling really overwhelmed with my finals coming up. Anyone else struggling with exam stress? How do you manage it?</p>
+                <div class="post-actions">
+                    <button class="btn btn-outline"><i class="fas fa-heart"></i> 12</button>
+                    <button class="btn btn-outline"><i class="fas fa-comment"></i> 5</button>
+                    <button class="btn btn-outline"><i class="fas fa-share"></i> Share</button>
+                </div>
+                
+                <div class="forum-reply">
+                    <div class="post-meta">
+                        <div class="avatar">SC</div>
+                        <div>
+                            <strong>SupportivePeer</strong>
+                            <span>Replied 1 day ago</span>
+                        </div>
+                    </div>
+                    <p>I've been there! What helped me was breaking study sessions into 25-min chunks with 5-min breaks. You've got this!</p>
+                    <div class="post-actions">
+                        <button class="btn btn-outline"><i class="fas fa-heart"></i> 8</button>
+                    </div>
+                </div>
+                
+                <div class="forum-reply">
+                    <div class="post-meta">
+                        <div class="avatar">MG</div>
+                        <div>
+                            <strong>MindfulGrad</strong>
+                            <span>Replied 12 hours ago</span>
+                        </div>
+                    </div>
+                    <p>Try the Pomodoro technique! 25 minutes of focused study, then 5 minutes break. After 4 cycles, take a longer break. It really helps with maintaining focus.</p>
+                    <div class="post-actions">
+                        <button class="btn btn-outline"><i class="fas fa-heart"></i> 5</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="forum-post">
+                <div class="post-meta">
+                    <div class="avatar">NS</div>
+                    <div>
+                        <strong>NewStudent</strong>
+                        <span>Posted 5 hours ago</span>
+                    </div>
+                </div>
+                <h3>Having trouble making friends on campus</h3>
+                <p>I'm having trouble making friends on campus. Any suggestions for meeting people? I'm a bit introverted and find it hard to approach people.</p>
+                <div class="post-actions">
+                    <button class="btn btn-outline"><i class="fas fa-heart"></i> 7</button>
+                    <button class="btn btn-outline"><i class="fas fa-comment"></i> 3</button>
+                    <button class="btn btn-outline"><i class="fas fa-share"></i> Share</button>
+                </div>
+            </div>
+            
+            <div class="forum-post">
+                <div class="post-meta">
+                    <div class="avatar">LS</div>
+                    <div>
+                        <strong>LonelyScholar</strong>
+                        <span>Posted 1 day ago</span>
+                    </div>
+                </div>
+                <h3>Does anyone else feel isolated when studying remotely?</h3>
+                <p>With most of my classes being online, I'm feeling really isolated. Looking for study buddies or virtual co-working sessions. Anyone interested?</p>
+                <div class="post-actions">
+                    <button class="btn btn-outline"><i class="fas fa-heart"></i> 15</button>
+                    <button class="btn btn-outline"><i class="fas fa-comment"></i> 8</button>
+                    <button class="btn btn-outline"><i class="fas fa-share"></i> Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Post Modal -->
+    <div class="modal" id="newPostModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('newPostModal')">&times;</span>
+            <h2>Create New Post</h2>
+            <div class="form-group">
+                <label for="postTitle">Title</label>
+                <input type="text" id="postTitle" placeholder="What would you like to talk about?">
+            </div>
+            <div class="form-group">
+                <label for="postContent">Content</label>
+                <textarea id="postContent" rows="5" placeholder="Share your thoughts..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="postTopic">Topic</label>
+                <select id="postTopic">
+                    <option value="">Select a topic</option>
+                    <option value="anxiety">Anxiety</option>
+                    <option value="depression">Depression</option>
+                    <option value="stress">Stress</option>
+                    <option value="relationships">Relationships</option>
+                    <option value="academic">Academic Pressure</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="postAnonymously"> Post anonymously
+                </label>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;" onclick="submitPost()">
+                <i class="fas fa-paper-plane"></i> Post
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Your data is always safe and anonymous. We never share your personal information.</p>
+            <p>MindWell &copy; 2023. A supportive community for student mental wellness.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function showNewPostModal() {
+            document.getElementById('newPostModal').style.display = 'flex';
+        }
+        
+        function submitPost() {
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            
+            if (!title || !content) {
+                alert('Please add a title and content to your post.');
+                return;
+            }
+            
+            // In a real application, this would send the post to a server
+            alert('Your post has been submitted and will be visible after moderation.');
+            closeModal('newPostModal');
+            
+            // Clear the form
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+        }
+    </script>
+</body>
+</html>

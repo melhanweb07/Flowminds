@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - MindWell</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo" onclick="navigateTo('home.html')">
+                <i class="fas fa-brain"></i>
+                <h1>MindWell</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-link">Home</a></li>
+                    <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                    <li><a href="appointment.html" class="nav-link">Appointments</a></li>
+                    <li><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <div class="user-avatar" onclick="navigateTo('profile.html')">JS</div>
+                <button class="btn btn-outline" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-sidebar">
+                <div class="profile-header">
+                    <div class="profile-avatar">JS</div>
+                    <div>
+                        <h3>John Student</h3>
+                        <p>Psychology Major</p>
+                        <p><i class="fas fa-map-marker-alt"></i> University of California</p>
+                        <p><i class="fas fa-star"></i> Member since Jan 2023</p>
+                    </div>
+                </div>
+                
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Sessions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Resources</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">7</div>
+                        <div class="stat-label">Streak</div>
+                    </div>
+                </div>
+                
+                <div class="profile-menu">
+                    <button class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">
+                        <i class="fas fa-user-edit"></i> Edit Profile
+                    </button>
+                    <button class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">
+                        <i class="fas fa-cog"></i> Settings
+                    </button>
+                    <button class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">
+                        <i class="fas fa-shield-alt"></i> Privacy
+                    </button>
+                </div>
+            </div>
+            
+            <div class="profile-main">
+                <h2 class="section-title">My Profile</h2>
+                
+                <div class="profile-content">
+                    <div class="metric-card">
+                        <h3>Wellness Progress</h3>
+                        <div class="chart-container">
+                            <canvas id="wellnessChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>About Me</h3>
+                        <p>I'm a psychology student interested in mental health advocacy. I joined MindWell to better understand my own mental health and support others in their journey.</p>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>My Interests</h3>
+                        <div class="interests">
+                            <span class="interest-tag">Anxiety Management</span>
+                            <span class="interest-tag">Mindfulness</span>
+                            <span class="interest-tag">Academic Stress</span>
+                            <span class="interest-tag">Sleep Hygiene</span>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <i class="fas fa-comment"></i>
+                                <div>
+                                    <p>Posted in <a href="#">Peer Support Forum</a></p>
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-play-circle"></i>
+                                <div>
+                                    <p>Completed <a href="#">Guided Meditation</a></p>
+                                    <span>1 day ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-calendar-check"></i>
+                                <div>
+                                    <p>Scheduled appointment with <a href="#">Dr. Smith</a></p>
+                                    <span>2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <i class="fas fa-book-open"></i>
+                                <div>
+                                    <p>Read <a href="#">CBT Techniques Guide</a></p>
+                                    <span>3 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Your data is always safe and anonymous. We never share your personal information.</p>
+            <p>MindWell &copy; 2023. A supportive community for student mental wellness.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize wellness chart
+        function initWellnessChart() {
+            const wellnessCtx = document.getElementById('wellnessChart');
+            if (wellnessCtx) {
+                new Chart(wellnessCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Mood', 'Sleep', 'Stress', 'Social', 'Productivity', 'Self-Care'],
+                        datasets: [{
+                            label: 'Current Week',
+                            data: [7, 6, 5, 8, 7, 6],
+                            fill: true,
+                            backgroundColor: 'rgba(90, 103, 216, 0.2)',
+                            borderColor: 'rgb(90, 103, 216)',
+                            pointBackgroundColor: 'rgb(90, 103, 216)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(90, 103, 216)'
+                        }, {
+                            label: 'Last Week',
+                            data: [5, 5, 7, 6, 5, 4],
+                            fill: true,
+                            backgroundColor: 'rgba(167, 208, 224, 0.2)',
+                            borderColor: 'rgb(167, 208, 224)',
+                            pointBackgroundColor: 'rgb(167, 208, 224)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(167, 208, 224)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                angleLines: {
+                                    display: true
+                                },
+                                suggestedMin: 0,
+                                suggestedMax: 10
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        window.onload = function() {
+            initWellnessChart();
+        };
+    </script>
+</body>
+</html>

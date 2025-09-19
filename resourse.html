@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - MindWell</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo" onclick="navigateTo('home.html')">
+                <i class="fas fa-brain"></i>
+                <h1>MindWell</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" class="nav-link">Home</a></li>
+                    <li><a href="chatbot.html" class="nav-link">Chatbot</a></li>
+                    <li><a href="appointment.html" class="nav-link">Appointments</a></li>
+                    <li><a href="resources.html" class="nav-link active">Resources</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <div class="user-avatar" onclick="navigateTo('profile.html')">JS</div>
+                <button class="btn btn-outline" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Mental Health Resources</h2>
+        
+        <div class="resource-filters">
+            <button class="btn btn-primary">All</button>
+            <button class="btn btn-outline">English</button>
+            <button class="btn btn-outline">Hindi</button>
+            <button class="btn btn-outline">Spanish</button>
+            <button class="btn btn-outline">French</button>
+        </div>
+        
+        <div class="resources-grid">
+            <div class="resource-card">
+                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Meditation">
+                <div class="resource-content">
+                    <h3>Guided Meditation for Anxiety</h3>
+                    <p>A 15-minute session to help calm your mind and reduce anxiety.</p>
+                    <span class="language-tag">English</span>
+                    <button class="btn btn-outline" style="margin-top: 15px;">
+                        <i class="fas fa-play"></i> Start Meditation
+                    </button>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Yoga">
+                <div class="resource-content">
+                    <h3>Yoga for Stress Relief</h3>
+                    <p>Gentle yoga poses to release tension and promote relaxation.</p>
+                    <span class="language-tag">Hindi</span>
+                    <button class="btn btn-outline" style="margin-top: 15px;">
+                        <i class="fas fa-play"></i> Start Session
+                    </button>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Reading">
+                <div class="resource-content">
+                    <h3>Cognitive Behavioral Therapy Guide</h3>
+                    <p>Learn techniques to reframe negative thought patterns.</p>
+                    <span class="language-tag">Spanish</span>
+                    <button class="btn btn-outline" style="margin-top: 15px;">
+                        <i class="fas fa-book-open"></i> Read Now
+                    </button>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Breathing">
+                <div class="resource-content">
+                    <h3>Breathing Exercises</h3>
+                    <p>Simple techniques to regulate your breathing and reduce stress.</p>
+                    <span class="language-tag">English</span>
+                    <button class="btn btn-outline" style="margin-top: 15px;">
+                        <i class="fas fa-play"></i> Start Exercise
+                    </button>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <img src="https://images.unsplash.com/photo-1590065480004-477ef6d4d5dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sleep">
+                <div class="resource-content">
+                    <h3>Sleep Hygiene Guide</h3>
+                    <p>Tips and techniques for improving your sleep quality.</p>
+                    <span class="language-tag">French</span>
+                    <button class="btn btn-outline" style="margin-top: 15px;">
+                        <i class="fas fa-book-open"></i> Read Guide
+                    </button>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Mindfulness">
+                <div class="resource-content">
+                    <h3>Mindfulness Practices</h3>
+                    <p>Learn how to stay present and reduce anxiety through mindfulness.</p>
+                    <span class="language-tag">English</span>
+                    <button class="btn btn-outline" style="margin-top: 15px;">
+                        <i class="fas fa-play"></i> Start Practice
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Your data is always safe and anonymous. We never share your personal information.</p>
+            <p>MindWell &copy; 2023. A supportive community for student mental wellness.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
